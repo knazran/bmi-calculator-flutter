@@ -4,8 +4,11 @@ import 'package:bmi_calculator/components/reusable_card.dart';
 import 'package:bmi_calculator/components/bottom_action_button.dart';
 
 class ResultsPage extends StatelessWidget {
-  final String descriptionText =
-      "You have higher than normal body weight. Control your diet and exercise more.";
+  ResultsPage({@required this.bmiResult, @required this.resultText, @required this.descriptionText});
+
+  final String bmiResult;
+  final String resultText;
+  final String descriptionText; 
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +40,11 @@ class ResultsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    "OVERWEIGHT",
+                    resultText.toUpperCase(),
                     style: kResultCardTitleStyle,
                   ),
                   Text(
-                    "26.7",
+                    bmiResult,
                     style: kResultCardNumberStyle,
                   ),
                   Container(

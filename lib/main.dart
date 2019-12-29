@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/screens/input_page.dart';
-import 'package:bmi_calculator/screens/results_page.dart';
+
 
 void main() => runApp(BMICalculator());
 
@@ -16,7 +16,7 @@ class BMICalculator extends StatelessWidget {
       routes: {
         '/' : (context) => InputPage(),
         'input_page' : (context) => InputPage(),
-        'results' : (context) => ResultsPage(),
+        // 'results' : (context) => ResultsPage(),
       }
     );
   }
