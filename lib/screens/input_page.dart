@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'icon_content.dart';
-import 'reusable_card.dart';
-import 'constants.dart';
+import 'package:bmi_calculator/components/icon_content.dart';
+import 'package:bmi_calculator/components/reusable_card.dart';
+import 'package:bmi_calculator/components/round_icon_button.dart';
+import 'package:bmi_calculator/components/bottom_action_button.dart';
+import 'package:bmi_calculator/constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class InputPage extends StatefulWidget {
@@ -186,22 +188,13 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
-            onTap: (){
+          BottomActionButton(
+            onTapHandler: (){
               Navigator.pushNamed(context, 'results');
             },
-            child: Container(
-              child: Center(
-                child: Text(
-                  "CALCULATE",
-                  style: kLargeButtonTextStyle,
-                ),
-              ),
-              color: bottomContainerColor,
-              margin: EdgeInsets.only(top: 10.0),
-              padding: EdgeInsets.only(bottom: 20.0),
-              width: double.infinity,
-              height: bottomContainerHeight,
+            buttonChild: Text(
+              "CALCULATE",
+              style: kLargeButtonTextStyle,
             ),
           )
         ],
@@ -210,23 +203,3 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class RoundIconButton extends StatelessWidget {
-  final IconData iconData;
-  final Function onPressedHandler;
-
-  RoundIconButton({@required this.iconData, @required this.onPressedHandler});
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(iconData),
-      onPressed: () {
-        onPressedHandler();
-      },
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
-      constraints: BoxConstraints.tightFor(width: 56.0, height: 56.0),
-      elevation: 6.0,
-    );
-  }
-}

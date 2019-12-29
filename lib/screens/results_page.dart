@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
-import 'reusable_card.dart';
+import 'package:bmi_calculator/constants.dart';
+import 'package:bmi_calculator/components/reusable_card.dart';
+import 'package:bmi_calculator/components/bottom_action_button.dart';
 
 class ResultsPage extends StatelessWidget {
-  final String description_text =
+  final String descriptionText =
       "You have higher than normal body weight. Control your diet and exercise more.";
 
   @override
@@ -19,7 +20,8 @@ class ResultsPage extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
+              padding: EdgeInsets.all(15.0),
+              alignment: Alignment.bottomLeft,
               child: Text(
                 "Your Results",
                 style: kH1TitleTextStyle,
@@ -27,7 +29,7 @@ class ResultsPage extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 9,
+            flex: 5,
             child: ReusableCard(
               colorProp: activeCardColor,
               cardChild: Column(
@@ -45,7 +47,7 @@ class ResultsPage extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 5.0),
                     child: Text(
-                      description_text,
+                      descriptionText,
                       style: kResultCardSubtitleStyle,
                       textAlign: TextAlign.center,
                     ),
@@ -54,26 +56,12 @@ class ResultsPage extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
-              flex: 1,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, 'results');
-                },
-                child: Container(
-                  child: Center(
-                    child: Text(
-                      "RE-CALCULATE",
-                      style: kLargeButtonTextStyle,
-                    ),
-                  ),
-                  color: bottomContainerColor,
-                  // margin: EdgeInsets.only(top: 5.0),
-                  padding: EdgeInsets.only(bottom: 20.0),
-                  width: double.infinity,
-                  height: bottomContainerHeight,
-                ),
-              ))
+          BottomActionButton(
+            onTapHandler: () {
+              Navigator.pop(context);
+            },
+            buttonChild: Text("RE-CALCULATE", style: kLargeButtonTextStyle),
+          )
         ],
       ),
     );
